@@ -1,0 +1,24 @@
+[project]
+name = "server"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "vathanakphy",email = "vathanakphy@gmail.com"}
+]
+requires-python = ">=3.14"
+dependencies = [
+    "django (>=6.0.3,<7.0.0)",
+    "djangorestframework (>=3.17.0,<4.0.0)",
+    "psycopg2-binary (>=2.9.11,<3.0.0)",
+    "python-dotenv (>=1.2.2,<2.0.0)",
+    "cloudinary (>=1.44.1,<2.0.0)",
+    "bcrypt (>=5.0.0,<6.0.0)",
+    "sentry-sdk (>=2.55.0,<3.0.0)",
+    "uvicorn[standard] (>=0.42.0,<0.43.0)",
+    "dj-database-url (>=3.1.2,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

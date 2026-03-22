@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: nham_ey_db
+    restart: always
+    environment:
+      POSTGRES_USER: nhamey
+      POSTGRES_PASSWORD: nhamey_pass
+      POSTGRES_DB: nhamey_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: nham_ey_web
+    command: poetry run uvicorn nhamey.asgi:application --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://nhamey:nhamey_pass@db:5432/nhamey_db
+
+volumes:
+  db_data:
